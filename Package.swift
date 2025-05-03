@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
     name: "MoodleCoreSwift",
     platforms: [
-            .macOS(.v12),
-            .iOS(.v15)
+            .macOS(.v13),
+            .iOS(.v16)
         ],
     products: [
         .library(

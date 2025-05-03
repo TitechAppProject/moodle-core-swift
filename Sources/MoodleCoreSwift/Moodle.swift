@@ -8,11 +8,11 @@ public struct Moodle {
     let apiClient: APIClient
 
     public init(
-        baseHost: String,
+        baseURL: URL,
         userAgent: String,
         urlSession: URLSession = .shared
     ) {
-        self.apiClient = APIClientImpl(baseHost: baseHost, userAgent: userAgent, urlSession: urlSession)
+        self.apiClient = APIClientImpl(baseURL: baseURL, userAgent: userAgent, urlSession: urlSession)
     }
 
     init(apiClient: APIClient) {
