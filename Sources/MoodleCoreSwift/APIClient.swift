@@ -38,11 +38,11 @@ struct APIClientImpl: APIClient {
     #if !canImport(FoundationNetworking)
     private let urlSessionDelegate: URLSessionTaskDelegate
     #endif
-    private let baseHost: String
+    private let baseURL: URL
     private let userAgent: String
 
-    init(baseHost: String, userAgent: String, urlSession: URLSession = .shared) {
-        self.baseHost = baseHost
+    init(baseURL: URL, userAgent: String, urlSession: URLSession = .shared) {
+        self.baseURL = baseURL
         self.userAgent = userAgent
         self.urlSession = urlSession
         #if !canImport(FoundationNetworking)
@@ -51,7 +51,7 @@ struct APIClientImpl: APIClient {
     }
 
     func send<R>(request: R) async throws -> R.Response where R: Request {
-        let urlRequest = request.generate(baseHost: baseHost, userAgent: userAgent)
+        let urlRequest = request.generate(baseURL: baseURL, userAgent: userAgent)
 
         let (data, response) = try await fetchData(request: urlRequest)
 

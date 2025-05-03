@@ -58,7 +58,7 @@ final class MoodleTests: XCTestCase {
 
     func testCourseContents() async throws {
         let moodle = Moodle(
-            baseHost: "t2schola-mock.titech.app",
+            baseURL: URL(string: "https://t2schola-mock.titech.app")!,
             userAgent: ""
         )
 

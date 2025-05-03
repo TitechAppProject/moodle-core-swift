@@ -127,13 +127,13 @@ extension Request where RequestBody == Void {
 }
 
 extension Request {
-    func generate(baseHost: String, userAgent: String) -> URLRequest {
-        var request = URLRequest(url: encoded(for: URL(string: "https://\(baseHost)")!.appendingPathComponent(path)))
+    func generate(baseURL: URL, userAgent: String) -> URLRequest {
+        var request = URLRequest(url: encoded(for: baseURL.appendingPathComponent(path)))
 
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = {
             var header: [String: String] = [
-                "Host": baseHost,
+                "Host": baseURL.host()!,
                 "User-Agent": userAgent,
             ]
 
