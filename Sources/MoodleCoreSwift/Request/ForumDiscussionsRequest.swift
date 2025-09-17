@@ -22,11 +22,11 @@ struct ForumDiscussionsRequest: RestAPIRequest {
     }
 }
 
-public struct ForumDiscussionsResponse: Codable {
+public struct ForumDiscussionsResponse: Codable, Sendable {
     public let discussions: [ForumDiscussionResponse]  // post
 }
 
-public struct ForumDiscussionResponse: Codable, Identifiable {
+public struct ForumDiscussionResponse: Codable, Identifiable, Sendable {
     public let id: Int  // Post id.
     public let name: String  // Discussion name.
     public let groupid: Int  // Group id.

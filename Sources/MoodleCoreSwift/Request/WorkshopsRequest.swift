@@ -21,12 +21,12 @@ struct WorkshopsRequest: RestAPIRequest {
     }
 }
 
-public struct WorkshopsResponse: Codable {
+public struct WorkshopsResponse: Codable, Sendable {
     public let workshops: [WorkshopResponse]
 
 }
 
-public struct WorkshopResponse: Codable {
+public struct WorkshopResponse: Codable, Sendable {
     public let id: Int  // The primary key of the record.
     public let course: Int  // Course id this workshop is part of.
     public let name: String  // Workshop name.

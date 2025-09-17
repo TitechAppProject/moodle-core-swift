@@ -21,12 +21,12 @@ struct QuizzesRequest: RestAPIRequest {
     }
 }
 
-public struct QuizzesResponse: Codable {
+public struct QuizzesResponse: Codable, Sendable {
     public let quizzes: [QuizResponse]
 
 }
 
-public struct QuizResponse: Codable {
+public struct QuizResponse: Codable, Sendable {
     public let id: Int  //  Standard Moodle primary key.
     public let course: Int  //  Foreign key reference to the course this quiz is part of.
     public let coursemodule: Int  //  Course module id.

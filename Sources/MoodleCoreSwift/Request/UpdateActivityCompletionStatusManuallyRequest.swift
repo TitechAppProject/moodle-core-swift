@@ -23,6 +23,6 @@ struct UpdateActivityCompletionStatusManuallyRequest: RestAPIRequest {
     }
 }
 
-public struct UpdateActivityCompletionStatusManuallyResponse: Codable {
+public struct UpdateActivityCompletionStatusManuallyResponse: Codable, Sendable {
     public let status: Bool
 }

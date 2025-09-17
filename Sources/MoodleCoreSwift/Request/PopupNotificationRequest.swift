@@ -22,13 +22,13 @@ struct PopupNotificationRequest: RestAPIRequest {
     }
 }
 
-public struct PopupNotificationResponse: Codable {
+public struct PopupNotificationResponse: Codable, Sendable {
     public let unreadcount: Int  // The number of unread message for the given user.
     public let notifications: [PopupNotification]
 }
 
 /// Notification returned by message_popup_get_popup_notifications.
-public struct PopupNotification: Codable {
+public struct PopupNotification: Codable, Sendable {
     public let id: Int  // Notification id (this is not guaranteed to be unique within this result set).
     public let useridfrom: Int  // User from id.
     public let useridto: Int  // User to id.

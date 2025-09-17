@@ -24,7 +24,7 @@ struct UserEnrolCoursesRequest: RestAPIRequest {
 
 public typealias UserEnrolCoursesResponse = [UserEnrolCourseResponse]
 
-public struct UserEnrolCourseResponse {
+public struct UserEnrolCourseResponse: Codable, Sendable {
     public let id: Int  // Course id.
     public let fullname: String  // Course full name.
     public let displayname: String?  // Course display name.
@@ -54,5 +54,3 @@ public struct UserEnrolCourseResponse {
     public let showcompletionconditions: Bool?  // @since 3.11. Whether the activity completion conditions are shown or not.
     public let category: Int?  // Course category id.
 }
-
-extension UserEnrolCourseResponse: Codable {}

@@ -26,7 +26,7 @@ struct AssignmentSubmissionCommentsRequest: RestAPIRequest {
     }
 }
 
-public struct AssignmentSubmissionCommentsResponse: Codable {
+public struct AssignmentSubmissionCommentsResponse: Codable, Sendable {
     public let comments: [AssignmentSubmissionCommentResponse]  //List of comments
     public let count: Int?  //Total number of comments.
     public let perpage: Int?  //Number of comments per page.
@@ -34,7 +34,7 @@ public struct AssignmentSubmissionCommentsResponse: Codable {
     public let warnings: [AssignmentSubmissionCommentsResponseWarning]?  //list of warnings
 }
 
-public struct AssignmentSubmissionCommentResponse: Codable {
+public struct AssignmentSubmissionCommentResponse: Codable, Sendable {
     public let id: Int  //Comment ID
     public let content: String  //The content text formatted
     public let format: Int  //content format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
@@ -48,7 +48,7 @@ public struct AssignmentSubmissionCommentResponse: Codable {
     public let delete: Bool?  //Permission to delete=true/false
 }
 
-public struct AssignmentSubmissionCommentsResponseWarning: Codable {
+public struct AssignmentSubmissionCommentsResponseWarning: Codable, Sendable {
     public let item: String?
     public let itemid: Int?
     // The warning code can be used by the client app to implement specific behaviour.

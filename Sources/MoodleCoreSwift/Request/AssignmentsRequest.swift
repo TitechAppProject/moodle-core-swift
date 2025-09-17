@@ -21,12 +21,12 @@ struct AssignmentsRequest: RestAPIRequest {
     }
 }
 
-public struct AssignmentsResponse: Codable {
+public struct AssignmentsResponse: Codable, Sendable {
     public let courses: [AssignmentCourseResponse]  // List of courses.
 
 }
 
-public struct AssignmentCourseResponse: Codable {
+public struct AssignmentCourseResponse: Codable, Sendable {
     public let id: Int  // Course id.
     public let fullname: String  // Course full name.
     public let shortname: String  // Course short name.
@@ -34,7 +34,7 @@ public struct AssignmentCourseResponse: Codable {
     public let assignments: [AssignmentResponse]  // Assignment info.
 }
 
-public struct AssignmentResponse: Codable {
+public struct AssignmentResponse: Codable, Sendable {
     public let id: Int  // Assignment id.
     public let cmid: Int  // Course module id.
     public let course: Int  // Course id.
@@ -73,7 +73,7 @@ public struct AssignmentResponse: Codable {
 }
 
 /// Structure of files returned by WS.
-public struct CoreWSExternalFile: Codable {
+public struct CoreWSExternalFile: Codable, Sendable {
     /**
      * File name.
      */

@@ -39,7 +39,7 @@ public struct AddCommentsRequestBody: WwwFormUrlEncodedBody {
 
 public typealias AddCommentsResponse = [AddCommentResponse]
 
-public struct AddCommentResponse: Codable {
+public struct AddCommentResponse: Codable, Sendable {
     public let id: Int  //Comment ID
     public let content: String  //The content text formatted
     public let format: Int  //content format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)

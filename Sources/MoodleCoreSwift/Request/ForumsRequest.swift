@@ -36,7 +36,7 @@ public typealias ForumsResponse = [ForumResponse]
 //    public let discussions: [ForumResponse]  // post
 //}
 
-public struct ForumResponse: Codable, Identifiable {
+public struct ForumResponse: Codable, Identifiable, Sendable {
     public let id: Int  // Forum id. <- can use at ForumDiscussionRequest
     public let course: Int  // Course id.
     public let type: String  // The forum type.
