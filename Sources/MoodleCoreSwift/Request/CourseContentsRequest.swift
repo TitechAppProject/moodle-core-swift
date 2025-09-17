@@ -24,14 +24,14 @@ struct CourseContentsRequest: RestAPIRequest {
 
 public typealias CourseContentsResponse = [CourseContentResponse]
 
-public struct CourseContentResponse: Codable {
+public struct CourseContentResponse: Codable, Sendable {
     public let id: Int
     public let name: String
     public let summary: String
     public let modules: [CourseContentModule]
 }
 
-public struct CourseContentModule: Codable {
+public struct CourseContentModule: Codable, Sendable {
     public let id: Int
     public let modname: CourseContentModuleName
     public let url: URL?
@@ -45,11 +45,11 @@ public struct CourseContentModule: Codable {
     public let contents: [CourseContentModuleContent]?
 }
 
-public struct CourseContentModuleCompletionData: Codable {
+public struct CourseContentModuleCompletionData: Codable, Sendable {
     public let state: Int
 }
 
-public enum CourseContentModuleName: String, Codable {
+public enum CourseContentModuleName: String, Codable, Sendable {
     case page
     case forum
     case assign
@@ -75,7 +75,7 @@ public enum CourseContentModuleName: String, Codable {
     }
 }
 
-public struct CourseContentModuleContent: Codable {
+public struct CourseContentModuleContent: Codable, Sendable {
     public let type: CourseContentModuleContentType
     public let filename: String
     public let filepath: String?
@@ -90,7 +90,7 @@ public struct CourseContentModuleContent: Codable {
     public let license: String?
 }
 
-public enum CourseContentModuleContentType: String, Codable {
+public enum CourseContentModuleContentType: String, Codable, Sendable {
     case file
     case url
 

@@ -27,7 +27,7 @@ public enum APIClientError: Error {
     case policy
 }
 
-public struct MoodleAPIErrorResponse: Decodable {
+public struct MoodleAPIErrorResponse: Decodable, Sendable {
     public let errorcode: String
     public let exception: String
     public let message: String
@@ -83,7 +83,7 @@ struct APIClientImpl: APIClient {
     }
 }
 
-class HTTPClientDelegate: URLProtocol, URLSessionTaskDelegate {
+final class HTTPClientDelegate: NSObject, URLSessionTaskDelegate {
     #if DEBUG && canImport(os)
     private let logger = Logger(subsystem: "app.titech.moodle-core-swift", category: "HTTPClientDelegate")
     #endif

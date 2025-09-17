@@ -23,7 +23,7 @@ struct CourseCategoriesRequest: RestAPIRequest {
 
 public typealias CourseCategoriesResponse = [CourseCategoryResponse]
 
-public struct CourseCategoryResponse: Codable {
+public struct CourseCategoryResponse: Codable, Sendable {
     public let id: Int
     public let name: String
     public let parent: Int

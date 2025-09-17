@@ -21,12 +21,10 @@ struct SiteInfoRequest: RestAPIRequest {
     }
 }
 
-public struct SiteInfoResponse {
+public struct SiteInfoResponse: Codable, Sendable {
     public let userid: Int
     public let username: String
     public let fullname: String
     public let firstname: String
     public let lastname: String
 }
-
-extension SiteInfoResponse: Codable {}

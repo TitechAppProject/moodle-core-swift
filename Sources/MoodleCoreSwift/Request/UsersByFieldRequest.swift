@@ -26,7 +26,7 @@ struct UsersByFieldRequest: RestAPIRequest {
 
 public typealias UsersByFieldResponse = [UserByFieldResponse]
 
-public struct UserByFieldResponse: Decodable {
+public struct UserByFieldResponse: Decodable, Sendable {
     public let id: Int  // ID of the user.
     public let username: String?  // The username.
     public let firstname: String?  // The first name(s) of the user.

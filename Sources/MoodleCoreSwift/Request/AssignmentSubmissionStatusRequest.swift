@@ -23,7 +23,7 @@ struct AssignmentSubmissionStatusRequest: RestAPIRequest {
     }
 }
 
-public struct AssignmentSubmissionStatusResponse: Codable {
+public struct AssignmentSubmissionStatusResponse: Codable, Sendable {
     //    public let gradingsummary: [AssignmentSubmissionGradingSummary]?  // Grading information.
     public let lastattempt: AssignmentSubmissionLastAttempt?  // Last attempt information.
     public let feedback: AssignmentSubmissionFeedback?  // Feedback for the last attempt.
@@ -55,7 +55,7 @@ public struct AssignmentSubmissionStatusResponse: Codable {
 //    public let activity: [CoreWSExternalFile]? // Activity attachments files.
 //}
 
-public struct AssignmentSubmissionStatusResponseWarning: Codable {
+public struct AssignmentSubmissionStatusResponseWarning: Codable, Sendable {
     public let item: String?
     public let itemid: Int?
     // The warning code can be used by the client app to implement specific behaviour.
@@ -64,7 +64,7 @@ public struct AssignmentSubmissionStatusResponseWarning: Codable {
     public let message: String
 }
 
-public struct AssignmentSubmissionLastAttempt: Codable {
+public struct AssignmentSubmissionLastAttempt: Codable, Sendable {
     public let submission: AssignmentSubmission?  // Submission info.
     public let teamsubmission: AssignmentSubmission?  // Submission info.
     public let submissiongroup: Int?  // The submission group id (for group submissions only).
@@ -82,14 +82,14 @@ public struct AssignmentSubmissionLastAttempt: Codable {
     //    public let timelimit: Int?  // @since 4.0. Time limit for submission.
 }
 
-public struct AssignmentSubmissionFeedback: Codable {
+public struct AssignmentSubmissionFeedback: Codable, Sendable {
     public let grade: AssignmentSubmissionGrade?  // Grade information.
     public let gradefordisplay: String?  // Grade rendered into a format suitable for display.
     public let gradeddate: Date?  // The date the user was graded.
     public let plugins: [AddonModAssignPlugin]?  // Plugins info.
 }
 
-public struct AssignmentSubmissionGrade: Codable {
+public struct AssignmentSubmissionGrade: Codable, Sendable {
     public let id: Int  // Grade id.
     public let assignment: Int?  // Assignment id.
     public let userid: Int  // Student id.
@@ -101,14 +101,14 @@ public struct AssignmentSubmissionGrade: Codable {
     public let gradefordisplay: String?  // Grade rendered into a format suitable for display.
 }
 
-public struct AssignmentSubmissionPreviousAttempt: Codable {
+public struct AssignmentSubmissionPreviousAttempt: Codable, Sendable {
     public let attemptnumber: Int  // Attempt number.
     public let submission: AssignmentSubmission?  // Submission info.
     public let grade: AssignmentSubmissionGrade?  // Grade information.
     public let feedbackplugins: [AddonModAssignPlugin]?  // Feedback info.
 }
 
-public struct AssignmentSubmission: Codable {
+public struct AssignmentSubmission: Codable, Sendable {
     public let id: Int  // Submission id.
     public let userid: Int  // Student id.
     public let attemptnumber: Int  // Attempt number.
@@ -123,7 +123,7 @@ public struct AssignmentSubmission: Codable {
     //    public let timestarted: Int? // @since 4.0. Submission start time.
 }
 
-public struct AddonModAssignPlugin: Codable {
+public struct AddonModAssignPlugin: Codable, Sendable {
     public let type: String  // Submission plugin type.
     public let name: String  // Submission plugin name.
     public let fileareas: [AddonModAssignPluginFilearea]?  // Fileareas.
@@ -131,19 +131,19 @@ public struct AddonModAssignPlugin: Codable {
 
 }
 
-public struct AddonModAssignPluginFilearea: Codable {
+public struct AddonModAssignPluginFilearea: Codable, Sendable {
     public let area: String  // File area.
     public let files: [CoreWSExternalFile]?
 }
 
-public struct AddonModAssignPluginEditorfield: Codable {
+public struct AddonModAssignPluginEditorfield: Codable, Sendable {
     public let name: String  // Field name.
     public let description: String  // Field description.
     public let text: String  // Field value.
     public let format: Int  // Text format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN).
 }
 
-public enum AssignmentSubmissionStatus: String, Codable {
+public enum AssignmentSubmissionStatus: String, Codable, Sendable {
     case new = "new"
     case reopened = "reopened"
     case draft = "draft"
@@ -165,7 +165,7 @@ public enum AssignmentSubmissionStatus: String, Codable {
     }
 }
 
-public enum AssignmentGradingStatus: String, Codable {
+public enum AssignmentGradingStatus: String, Codable, Sendable {
     case graded = "graded"
     case notgraded = "notgraded"
     // Added by App Statuses.

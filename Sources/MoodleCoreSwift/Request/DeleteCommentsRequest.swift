@@ -32,7 +32,7 @@ public struct DeleteCommentsRequestBody: WwwFormUrlEncodedBody {
 
 public typealias DeleteCommentsResponse = [DeleteCommentsResponseWarning]?
 
-public struct DeleteCommentsResponseWarning: Codable {
+public struct DeleteCommentsResponseWarning: Codable, Sendable {
     public let item: String?
     public let itemid: Int?
     // The warning code can be used by the client app to implement specific behaviour.

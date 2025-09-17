@@ -22,12 +22,12 @@ struct NotificationReadRequest: RestAPIRequest {
     }
 }
 
-public struct NotificationReadResponse: Codable {
+public struct NotificationReadResponse: Codable, Sendable {
     public let notificationid: Int  // Id of the notification.
     public let warnings: [NotificationReadResponseWarning]?
 }
 
-public struct NotificationReadResponseWarning: Codable {
+public struct NotificationReadResponseWarning: Codable, Sendable {
     public let item: String?
     public let itemid: Int?
     // The warning code can be used by the client app to implement specific behaviour.
